@@ -7,20 +7,42 @@
 // PRINT the OUTPUT with the results.
 
 // Write the code.
-function getComputerChoice(){
-    let a = Math.floor(Math.random() * 3)
-    if (a < 1) {
-        a = "rock"
-    }
-    if (a == 1) {
-        a = "paper"
-    }
-    if (a > 1) {
-        a = "scissors"
-    }
-    return a;
+console.log("Hi Dev!");
+
+// Logic to get the computer choice
+function getComputerChoice() {
+  let a = Math.floor(Math.random() * 3);
+  if (a < 1) {
+    a = "rock";
+  } else if (a == 1) {
+    a = "paper";
+  } else if (a > 1) {
+    a = "scissors";
+  }
+  return a;
 }
 
-console.log(getComputerChoice())    
+// Logic to get the human choice
+alert("You're now playing rock papper scissors!");
+
+function getHumanChoice() {
+  let b = prompt(
+    "Choose between 1 (Rock), 2 (Papper) or 3 (Scissors).",
+    "1 - 3"
+  );
+  if (b < 1) {
+    b = "rock";
+  } else if (b == 1) {
+    b = "paper";
+  } else if (b > 1) {
+    b = "scissors";
+  }
+  return b;
+}
+getHumanChoice();
 
 // Test your code to make sure it works.
+
+console.log("Machine chose:", getComputerChoice());
+
+console.log("You've chosen:", getHumanChoice());
