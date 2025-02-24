@@ -27,7 +27,7 @@ alert("You're now playing rock papper scissors!");
 
 function getHumanChoice() {
   let b = prompt(
-    "Choose between 1 (Rock), 2 (Papper) or 3 (Scissors).",
+    "Choose between 1 (Rock), 2 (Paper) or 3 (Scissors).",
     "1 - 3"
   );
   if (b < 1) {
@@ -45,4 +45,5 @@ getHumanChoice();
 
 console.log("Machine chose:", getComputerChoice());
 
+// This log is creating a second prompt, watch out.
 console.log("You've chosen:", getHumanChoice());
