@@ -18,16 +18,9 @@ function getComputerChoice(){
     if (a > 1) {
         a = "scissors"
     }
-    console.log(a)
+    return a;
 }
 
 console.log(getComputerChoice())    
-
-// function getHumanChoice(){
-//     let b = Math.floor(Math.random() * 3) + 1;
-//     console.log(b)
-// }
-
-// console.log(getHumanChoice())
 
 // Test your code to make sure it works.
