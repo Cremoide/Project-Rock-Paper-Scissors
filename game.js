@@ -7,12 +7,27 @@
 // PRINT the OUTPUT with the results.
 
 // Write the code.
-let machineChoice = Math.floor(Math.random() * 3) + 1;
-
-function getComputerChoice(machine){
-
+function getComputerChoice(){
+    let a = Math.floor(Math.random() * 3)
+    if (a < 1) {
+        a = "rock"
+    }
+    if (a == 1) {
+        a = "paper"
+    }
+    if (a > 1) {
+        a = "scissors"
+    }
+    console.log(a)
 }
 
-console.log(machineChoice);
+console.log(getComputerChoice())    
+
+// function getHumanChoice(){
+//     let b = Math.floor(Math.random() * 3) + 1;
+//     console.log(b)
+// }
+
+// console.log(getHumanChoice())
 
 // Test your code to make sure it works.
