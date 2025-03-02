@@ -9,111 +9,109 @@
 // Write the code.
 console.log("Hi Dev! Welcome to the game.");
 alert(
-  "You're now playing rock papper scissors! Win 5 rounds to beat the machine!"
+  "You're now playing rock papper scissors! Play 5 rounds to beat the machine!"
 );
 // console.log("You're now playing rock papper scissors!");
 
-// Logic to get the computer choice
-function getComputerChoice() {
-  let a = Math.floor(Math.random() * 3);
-  // console.log("Machine says:", a);
-  if (a < 1) {
-    a = "rock";
-  } else if (a == 1) {
-    a = "paper";
-  } else if (a > 1) {
-    a = "scissors";
-  }
-  console.log("So machines saying:", a);
-  return a;
-}
-
-// Logic to get the human choice
-function getHumanChoice() {
-  let b = prompt(
-    "Choose between rock, paper or scissors. (Write your bet).",
-    "paper"
-  ).toLowerCase();
-  if (b == "rock") {
-    b = "rock";
-  } else if (b == "paper") {
-    b = "paper";
-  } else if (b == "scissors") {
-    b = "scissors";
-  } else {
-    alert("Choose a valid item!");
-    getHumanChoice();
-  }
-  console.log("You say:", b);
-  // console.log("So you saying:", b);
-  return b;
-}
+// Declare the players score variables
+var computerScore = 0;
+var humanScore = 0;
 
 // Write the logic to play the entire game
 function playGame() {
-  // Declare the players score variables
-  var computerScore = 0;
-  var humanScore = 0;
+
+  // Logic to get the computer choice
+  function getComputerChoice() {
+    let a = Math.floor(Math.random() * 3);
+    // console.log("Machine says:", a);
+    if (a < 1) {
+      a = "rock";
+    } else if (a == 1) {
+      a = "paper";
+    } else if (a > 1) {
+      a = "scissors";
+    }
+    console.log("Machine says:", a);
+    return a;
+  }
+
+  // Logic to get the human choice
+  function getHumanChoice() {
+    let b = prompt(
+      "Choose between rock, paper or scissors. (Write your bet).",
+      "rock"
+    ).toLowerCase();
+    if (b == "rock") {
+      b = "rock";
+    } else if (b == "paper") {
+      b = "paper";
+    } else if (b == "scissors") {
+      b = "scissors";
+    } else {
+      alert("Choose a valid item!");
+      getHumanChoice();
+    }
+    console.log("You say:", b);
+    // console.log("So you saying:", b);
+    return b;
+  }
 
   const humanSelection = getHumanChoice();
   const computerSelection = getComputerChoice();
 
   // Write the logic to play a single round
-
   function playRound(humanSelection, computerSelection) {
-    if (humanSelection == "rock" & computerSelection == "rock") {
+    if ((humanSelection == "rock") & (computerSelection == "rock")) {
       alert("It's a tie! Try again...");
       return;
-    } else if (humanSelection == "paper" & computerSelection == "paper") {
+    } else if ((humanSelection == "paper") & (computerSelection == "paper")) {
       alert("It's a tie! Try again...");
       return;
-    } else if (humanSelection == "scissors" & computerSelection == "scissors") {
+    } else if (
+      (humanSelection == "scissors") &
+      (computerSelection == "scissors")
+    ) {
       alert("It's a tie! Try again...");
       return;
-    } else if (humanSelection == "rock" & computerSelection == "paper") {
+    } else if ((humanSelection == "rock") & (computerSelection == "paper")) {
       alert("You loose this round!");
       return computerScore++;
-    } else if (humanSelection == "paper" & computerSelection == "scissors") {
+    } else if (
+      (humanSelection == "paper") &
+      (computerSelection == "scissors")
+    ) {
       alert("You loose this round!");
       return computerScore++;
-    } else if (humanSelection == "scissors" & computerSelection == "rock") {
+    } else if ((humanSelection == "scissors") & (computerSelection == "rock")) {
       alert("You loose this round!");
       return computerScore++;
-    } else if (computerSelection == "rock" & humanSelection == "paper") {
+    } else if ((computerSelection == "rock") & (humanSelection == "paper")) {
       alert("You win this round!");
       return humanScore++;
-    } else if (computerSelection == "paper" & humanSelection == "scissors") {
+    } else if (
+      (computerSelection == "paper") &
+      (humanSelection == "scissors")
+    ) {
       alert("You win this round!");
       return humanScore++;
-    } else if (computerSelection == "scissors" & humanSelection == "rock") {
+    } else if ((computerSelection == "scissors") & (humanSelection == "rock")) {
       alert("You win this round!");
       return humanScore++;
     }
   }
   playRound(humanSelection, computerSelection);
   console.log("Machine:", computerScore, "Human:", humanScore);
-  getComputerChoice();
-  getHumanChoice();
-  playRound(humanSelection, computerSelection);
-  console.log("Machine:", computerScore, "Human:", humanScore);
-  getComputerChoice();
-  getHumanChoice();
-  playRound(humanSelection, computerSelection);
-  console.log("Machine:", computerScore, "Human:", humanScore);
-  getComputerChoice();
-  getHumanChoice();
-  playRound(humanSelection, computerSelection);
-  console.log("Machine:", computerScore, "Human:", humanScore);
-  getComputerChoice();
-  getHumanChoice();
-  console.log("Machine:", computerScore, "Human:", humanScore);
 
-  if (computerScore == 3) {
-    console.log("Machine won.");
+  if (computerScore >= 3) {
+    console.log("Machine wins.");
+    console.log("FINAL SCORE: Machine:", computerScore, "Human:", humanScore);
     alert("Machine wins! Press F5 to play again...");
-  } else if (humanScore == 3) {
-    console.log("You won.");
+  } else if (humanScore >= 3) {
+    console.log("Human win.");
+    console.log("Machine:", computerScore, "Human:", humanScore);
     alert("You win! Press F5 to play again...");
+  } else {
+    playGame();
   }
 }
 
