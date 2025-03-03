@@ -65,40 +65,40 @@ function playGame() {
 
   // Write the logic to play a single round
   function playRound(humanSelection, computerSelection) {
-    if ((humanSelection == "rock") & (computerSelection == "rock")) {
+    if ((humanSelection == "rock") && (computerSelection == "rock")) {
       alert("It's a tie! Try again...");
       return;
-    } else if ((humanSelection == "paper") & (computerSelection == "paper")) {
+    } else if ((humanSelection == "paper") && (computerSelection == "paper")) {
       alert("It's a tie! Try again...");
       return;
     } else if (
-      (humanSelection == "scissors") &
+      (humanSelection == "scissors") &&
       (computerSelection == "scissors")
     ) {
       alert("It's a tie! Try again...");
       return;
-    } else if ((humanSelection == "rock") & (computerSelection == "paper")) {
+    } else if ((humanSelection == "rock") && (computerSelection == "paper")) {
       alert("You loose this round!");
       return computerScore++;
     } else if (
-      (humanSelection == "paper") &
+      (humanSelection == "paper") &&
       (computerSelection == "scissors")
     ) {
       alert("You loose this round!");
       return computerScore++;
-    } else if ((humanSelection == "scissors") & (computerSelection == "rock")) {
+    } else if ((humanSelection == "scissors") && (computerSelection == "rock")) {
       alert("You loose this round!");
       return computerScore++;
-    } else if ((computerSelection == "rock") & (humanSelection == "paper")) {
+    } else if ((computerSelection == "rock") && (humanSelection == "paper")) {
       alert("You win this round!");
       return humanScore++;
     } else if (
-      (computerSelection == "paper") &
+      (computerSelection == "paper") &&
       (humanSelection == "scissors")
     ) {
       alert("You win this round!");
       return humanScore++;
-    } else if ((computerSelection == "scissors") & (humanSelection == "rock")) {
+    } else if ((computerSelection == "scissors") && (humanSelection == "rock")) {
       alert("You win this round!");
       return humanScore++;
     }
