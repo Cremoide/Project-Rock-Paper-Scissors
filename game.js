@@ -17,8 +17,12 @@ alert(
 var computerScore = 0;
 var humanScore = 0;
 
+var roundsPlayed = 0;
+
 // Write the logic to play the entire game
 function playGame() {
+  roundsPlayed++;
+  console.log("Round:", roundsPlayed);
 
   // Logic to get the computer choice
   function getComputerChoice() {
@@ -102,14 +106,16 @@ function playGame() {
   playRound(humanSelection, computerSelection);
   console.log("Machine:", computerScore, "Human:", humanScore);
 
-  if (computerScore >= 3) {
-    console.log("Machine wins.");
-    console.log("FINAL SCORE: Machine:", computerScore, "Human:", humanScore);
-    alert("Machine wins! Press F5 to play again...");
-  } else if (humanScore >= 3) {
-    console.log("Human win.");
-    console.log("Machine:", computerScore, "Human:", humanScore);
-    alert("You win! Press F5 to play again...");
+  if ((roundsPlayed == 5)) {
+    if (computerScore > humanScore) {
+      console.log("Machine wins.");
+      console.log("FINAL SCORE: Machine:", computerScore, "Human:", humanScore);
+      alert("Machine wins! Press F5 to play again...");
+    } else if (humanScore > computerScore) {
+      console.log("Human win.");
+      console.log("FINAL SCORE: Machine:", computerScore, "Human:", humanScore);
+      alert("You win! Press F5 to play again...");
+    }
   } else {
     playGame();
   }
