@@ -24,33 +24,36 @@ buttons.addEventListener("click", function (e) {
 
   switch (humanSelection) {
     case "rock":
-      console.log("You chose: " + humanSelection);
+      console.log("You say: " + humanSelection);
       playRound(humanSelection, getComputerChoice());
+      winnerChecker();
       break;
     case "paper":
-      console.log("You chose: " + humanSelection);
+      console.log("You say: " + humanSelection);
       playRound(humanSelection, getComputerChoice());
+      winnerChecker();
       break;
     case "scissors":
-      console.log("You chose: " + humanSelection);
+      console.log("You say: " + humanSelection);
       playRound(humanSelection, getComputerChoice());
+      winnerChecker();
       break;
   }
 
-  // Updates score after playRound
-  const scoreDiv = document.querySelector("#scoreDiv");
+  // Updates round counter
+  document.getElementById("round").textContent = roundsPlayed;
 
+  // Updates score after playRound
   document.getElementById(
     "score"
   ).textContent = `Machine:  ${computerScore} Human: ${humanScore}`;
 
-  scoreDiv.appendChild(score);
-
   ////////////////////////////////////////////////////////////
   console.log("Machine:", computerScore, "Human:", humanScore);
+  console.log("-----------------------------------------------");
 });
 
-// Logic to get the computer choice (WORKING)
+// Logic function to get the computer choice (WORKING)
 function getComputerChoice() {
   let rps = ["rock", "paper", "scissors"];
   let a = rps[Math.floor(Math.random() * rps.length)];
@@ -74,6 +77,7 @@ function displayResults() {
 
 // Logic to play a single round
 function playRound(humanSelection, computerSelection) {
+  roundsPlayed++;
   if (humanSelection == "rock" && computerSelection == "rock") {
     const resultsDiv = document.querySelector("#resultsDiv");
     document.getElementById("result").textContent = "It's a tie! Try again...";
@@ -122,18 +126,29 @@ function playRound(humanSelection, computerSelection) {
   }
 }
 
-// if ((roundsPlayed == 5)) {
-//   if (computerScore > humanScore) {
-//     console.log("Machine wins.");
-//     console.log("FINAL SCORE: Machine:", computerScore, "Human:", humanScore);
-//     alert("Machine wins! Press F5 to play again...");
-//   } else if (humanScore > computerScore) {
-//     console.log("Human win.");
-//     console.log("FINAL SCORE: Machine:", computerScore, "Human:", humanScore);
-//     alert("You win! Press F5 to play again...");
-//   }
-// } else {
-//   playGame();
-// }
+// Change to case for avoiding double win bug!
+function winnerChecker() {
+  if (computerScore === 5) {
+    document.getElementById("winner").textContent = `MACHINE REACHED 5 POINTS!`;
+
+    document.getElementById(
+      "finalScore"
+    ).textContent = `FINAL SCORE: Machine: ${computerScore} Human:  ${humanScore}`;
+
+    document.getElementById(
+      "finalText"
+    ).textContent = `Machine wins! Press F5 to play again...`;
+  } else if (humanScore === 5) {
+    document.getElementById("winner").textContent = `HUMAN REACHED 5 POINTS!`;
+
+    document.getElementById(
+      "finalScore"
+    ).textContent = `FINAL SCORE: Machine: ${computerScore} Human:  ${humanScore}`;
+
+    document.getElementById(
+      "finalText"
+    ).textContent = `Human wins! Press F5 to play again...`;
+  }
+}
 
 // Test your code to make sure it works.
